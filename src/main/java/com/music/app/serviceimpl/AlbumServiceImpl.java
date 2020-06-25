@@ -2,6 +2,7 @@ package com.music.app.serviceimpl;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.music.app.domain.Album;
 import com.music.app.domain.Artist;
+import com.music.app.exception.AlbumNotFoundException;
 import com.music.app.repository.AlbumRepository;
 import com.music.app.service.AlbumService;
 
@@ -42,11 +44,10 @@ public class AlbumServiceImpl implements AlbumService {
 
 		Page<Album> pagedResult = albumRepository.findAll(paging);
 
-		if (pagedResult.hasContent()) {
-			return new HashSet<Album>(pagedResult.getContent());
-		} else {
-			return new HashSet<Album>();
-		}
+		if (!pagedResult.hasContent()) 
+			 throw new AlbumNotFoundException("There are no Albums in the storage ");
+			
+		return new HashSet<Album>(pagedResult.getContent());
 	}
 
 	/**
@@ -59,8 +60,11 @@ public class AlbumServiceImpl implements AlbumService {
 	@Override
 	public Album findAlbumById(String albumId) {
 		System.out.println("albumId------>" + albumId);
-		Album album = albumRepository.findById(albumId).get();
-		return album;
+		Optional<Album> albumOptional = albumRepository.findById(albumId);				
+		if (!albumOptional.isPresent())
+		      throw new AlbumNotFoundException("AlbumId is not found -  " + albumId);
+		
+		return albumOptional.get();
 	}
 
 	/**
@@ -87,6 +91,9 @@ public class AlbumServiceImpl implements AlbumService {
 
 		Sort sort = Sort.by("albumTitle");
 		List<Album> albumList = albumRepository.findByArtist(artist, sort);
+		if(albumList==null || albumList.isEmpty()) 
+			throw new AlbumNotFoundException("No Albums found for ArtistId -  " + artistId);
+			      
 		return albumList;
 	}
 
@@ -95,6 +102,8 @@ public class AlbumServiceImpl implements AlbumService {
 
 		Sort sort = Sort.by("albumTitle");
 		List<Album> albumList = albumRepository.findByGenres(genre, sort);
+		if(albumList==null || albumList.isEmpty()) 
+			throw new AlbumNotFoundException("No Albums found for Genre -  " + genre);
 
 		return albumList;
 	}

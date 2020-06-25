@@ -1,6 +1,5 @@
 package com.music.app.serviceimpl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,12 +8,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import com.music.app.controller.ArtistNotFoundException;
 import com.music.app.domain.Artist;
+import com.music.app.exception.ArtistNotFoundException;
 import com.music.app.repository.ArtistRepository;
 import com.music.app.service.ArtistService;
 
@@ -55,11 +52,10 @@ public class ArtistServiceImpl implements ArtistService {
 
 		Page<Artist> pagedResult = artistRepository.findAll(paging);
 
-		if (pagedResult.hasContent()) {
-			return pagedResult.getContent();
-		} else {
-			return new ArrayList<Artist>();
-		}
+		if (!pagedResult.hasContent()) 
+			 throw new ArtistNotFoundException("There are no Artists in the storage");
+			
+			 return pagedResult.getContent();
 	}
 
 	/**
@@ -70,7 +66,12 @@ public class ArtistServiceImpl implements ArtistService {
 	 */
 	@Override
 	public Artist findArtistById(String artistId) {
-		return artistRepository.findById(artistId).get();
+				
+		Optional<Artist> artistOptional = artistRepository.findById(artistId);
+		 if (!artistOptional.isPresent())
+		      throw new ArtistNotFoundException("Artist is not found -  " + artistId);
+		
+		return artistOptional.get();
 	}
 
 	/**
@@ -85,8 +86,11 @@ public class ArtistServiceImpl implements ArtistService {
 	}
 
 	@Override
-	public Artist findArtistByName(String artistName) {
-		Artist artist = artistRepository.findByArtistName(artistName);
+	public Artist findArtistByName(String artistName) {		
+		Artist artist = artistRepository.findByArtistName(artistName);		
+		if(artist==null)
+			 throw new ArtistNotFoundException("Artist is not found -  " + artistName);
+		
 		return artist;
 	}
 

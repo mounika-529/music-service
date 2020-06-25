@@ -64,19 +64,14 @@ public class ArtistController {
 	 * @return the artist
 	 */
 	@GetMapping("/findByArtistId/{artistId}")
-	public Artist findArtistById(@PathVariable String artistId) throws ArtistNotFoundException{
-		
-		Artist artist = artistServiceImpl.findArtistById(artistId);
-//		if(artist==null) {
-//			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Artist is not found");	
-//		}
+	public Artist findArtistById(@PathVariable String artistId) {
+		Artist artist = artistServiceImpl.findArtistById(artistId);		
 		return artist;
 	}
 	
 	@GetMapping("/findByArtistName/{artistName}")
-	public  Artist findArtistByName(@PathVariable String artistName) {
-		Artist artist = artistServiceImpl.findArtistByName(artistName);
-		return artist ;
+	public  Artist findArtistByName(@PathVariable String artistName) {		 
+		return artistServiceImpl.findArtistByName(artistName); 
 	}
 
 	/**
