@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.music.app.controller.ArtistControllerTest
--------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.712 s - in com.music.app.controller.ArtistControllerTest
