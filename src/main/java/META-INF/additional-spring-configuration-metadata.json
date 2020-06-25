@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "springspring.datasource.password",
+    "type": "java.lang.String",
+    "description": "A description for 'springspring.datasource.password'"
+  },
+  {
+    "name": "application-version",
+    "type": "java.lang.String",
+    "description": "A description for 'application-version'"
+  },
+  {
+    "name": "application-description",
+    "type": "java.lang.String",
+    "description": "A description for 'application-description'"
+  }
+]}

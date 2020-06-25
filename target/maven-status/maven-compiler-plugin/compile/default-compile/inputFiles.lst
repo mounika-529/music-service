@@ -1,0 +1,14 @@
+D:\New folder\music-service\src\main\java\com\music\app\domain\Track.java
+D:\New folder\music-service\src\main\java\com\music\app\repository\AlbumRepository.java
+D:\New folder\music-service\src\main\java\com\music\app\controller\ArtistController.java
+D:\New folder\music-service\src\main\java\com\music\app\domain\Artist.java
+D:\New folder\music-service\src\main\java\com\music\app\serviceimpl\AlbumServiceImpl.java
+D:\New folder\music-service\src\main\java\com\music\app\service\ArtistService.java
+D:\New folder\music-service\src\main\java\com\music\app\controller\ArtistNotFoundException.java
+D:\New folder\music-service\src\main\java\com\music\app\domain\Album.java
+D:\New folder\music-service\src\main\java\com\music\app\controller\AlbumController.java
+D:\New folder\music-service\src\main\java\com\music\app\MusicServiceApplication.java
+D:\New folder\music-service\src\main\java\com\music\app\repository\ArtistRepository.java
+D:\New folder\music-service\src\main\java\com\music\app\serviceimpl\ArtistServiceImpl.java
+D:\New folder\music-service\src\main\java\com\music\app\swagger\SpringFoxConfig.java
+D:\New folder\music-service\src\main\java\com\music\app\service\AlbumService.java

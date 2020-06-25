@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.music.app.repository.ArtistRepositoryTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.463 s - in com.music.app.repository.ArtistRepositoryTest
