@@ -1,20 +1,6 @@
 # music-service
 
 
-Skip to content
-Using Gmail with screen readers
-Meet
-Start a meeting
-Join a meeting
-Chat
-
-Conversations
-1.14 GB (7%) of 15 GB used
-Manage
-Terms · Privacy · Program Policies
-Last account activity: 1 hour ago
-Details
-
 ============SWAGGER URL========================================================================
 http://localhost:8080/swagger-ui.html
 =========================================ARTIST CONTROLLER=====================================
